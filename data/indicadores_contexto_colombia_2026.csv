@@ -1,0 +1,13 @@
+indicador,valor,unidad,periodo,interpretacion,fuente_harvard
+inflacion_total,5.6,porcentaje,Primer trimestre 2026,Inflacion por encima de la meta del 3%,Banco de la Republica (2026)
+inflacion_basica,5.8,porcentaje,Primer trimestre 2026,Inflacion basica por encima de la meta,Banco de la Republica (2026)
+proyeccion_inflacion_dic_2026,6.4,porcentaje,Diciembre 2026,Inflacion esperada al cierre de 2026,Banco de la Republica (2026)
+tasa_politica_monetaria,11.25,porcentaje,Abril 2026,Tasa de interes elevada para controlar inflacion,Banco de la Republica (2026)
+crecimiento_pib_2025,2.6,porcentaje,2025,Crecimiento impulsado por consumo y deficit fiscal,Banco de la Republica (2026)
+crecimiento_pib_2026_banrep,2.4,porcentaje,2026 proyeccion,Crecimiento moderado segun Banco de la Republica,Banco de la Republica (2026)
+crecimiento_pib_2026_banco_mundial,2.2,porcentaje,2026 proyeccion,Crecimiento moderado segun Banco Mundial,World Bank (2026)
+pobreza_multidimensional,9.9,porcentaje,2025,Minimo desde medicion sistematica reciente,El Pais (2026d)
+desempleo_abril_2026,8.8,porcentaje,Abril 2026,Nivel bajo de desempleo,El Pais (2026b)
+informalidad_laboral,55.0,porcentaje,2025 aproximado,Reto estructural de formalizacion,El Pais (2026c)
+brecha_bogota_choco,6.0,ratio,2026 aproximado,Bogota tiene ingresos casi seis veces superiores a Choco,World Bank (2026)
+deficit_fiscal_pib,6.4,porcentaje,2025-2026,Deficit publico elevado riesgo de sostenibilidad fiscal,El Pais (2026a)

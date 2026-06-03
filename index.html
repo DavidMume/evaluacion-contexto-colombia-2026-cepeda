@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Evaluación del Plan de Cepeda — Colombia 2026</title>
+  <style>
+    /* ── Reset & base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 17px;
+      line-height: 1.75;
+      color: #1a1a1a;
+      background: #fafaf8;
+    }
+
+    /* ── Layout ── */
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+
+    /* ── Header / Hero ── */
+    header {
+      background: linear-gradient(135deg, #1b3a5c 0%, #2c5f8a 100%);
+      color: #fff;
+      padding: 3.5rem 1.5rem 3rem;
+      text-align: center;
+    }
+    header .eyebrow {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #a8c8e8;
+      margin-bottom: 1rem;
+    }
+    header h1 {
+      font-size: clamp(1.5rem, 4vw, 2.4rem);
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 1.2rem;
+    }
+    header .subtitle {
+      font-size: 1.05rem;
+      color: #c8dff0;
+      max-width: 680px;
+      margin: 0 auto 1.8rem;
+      font-style: italic;
+    }
+    .meta-row {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.82rem;
+      color: #a8c8e8;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.2rem;
+    }
+    .meta-row span::before { content: '• '; opacity: 0.5; }
+    .meta-row span:first-child::before { content: ''; }
+
+    /* ── Research question box ── */
+    .rq-box {
+      background: #fff;
+      border-left: 5px solid #2c5f8a;
+      border-radius: 0 8px 8px 0;
+      padding: 1.4rem 1.6rem;
+      margin: 2.5rem 0;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    }
+    .rq-box .rq-label {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #2c5f8a;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+    .rq-box p {
+      font-size: 1.05rem;
+      font-style: italic;
+      color: #1a1a1a;
+    }
+
+    /* ── Section headings ── */
+    h2 {
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: #1b3a5c;
+      margin: 3rem 0 0.8rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 2px solid #e0e8f0;
+    }
+    h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #2c5f8a;
+      margin: 2rem 0 0.5rem;
+    }
+
+    /* ── Body text ── */
+    p { margin-bottom: 1rem; }
+
+    /* ── Inline citation ── */
+    cite {
+      font-style: normal;
+      color: #2c5f8a;
+      font-size: 0.9em;
+    }
+
+    /* ── Callout / conclusion box ── */
+    .callout {
+      background: #eef4fb;
+      border: 1px solid #b8d0e8;
+      border-radius: 8px;
+      padding: 1.4rem 1.6rem;
+      margin: 2rem 0;
+    }
+    .callout p { margin-bottom: 0; font-style: italic; }
+    .callout strong { color: #1b3a5c; }
+
+    /* ── Data cards row ── */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1rem;
+      margin: 1.8rem 0;
+    }
+    .card {
+      background: #fff;
+      border: 1px solid #dde6ef;
+      border-radius: 10px;
+      padding: 1.1rem 1rem;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .card .card-value {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1b3a5c;
+      line-height: 1;
+    }
+    .card .card-value.red  { color: #c0392b; }
+    .card .card-value.amber{ color: #e67e22; }
+    .card .card-value.green{ color: #27ae60; }
+    .card .card-label {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.77rem;
+      color: #555;
+      margin-top: 0.4rem;
+      line-height: 1.3;
+    }
+    .card .card-source {
+      font-size: 0.68rem;
+      color: #999;
+      margin-top: 0.35rem;
+    }
+
+    /* ── Chart figures ── */
+    figure {
+      margin: 2.2rem 0;
+      text-align: center;
+    }
+    figure img {
+      max-width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.10);
+      border: 1px solid #dde6ef;
+    }
+    figcaption {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.82rem;
+      color: #555;
+      margin-top: 0.7rem;
+      line-height: 1.45;
+    }
+    figcaption strong { color: #1a1a1a; }
+
+    /* ── Alignment score table ── */
+    .score-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-size: 0.88rem;
+    }
+    .score-table th {
+      background: #1b3a5c;
+      color: #fff;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-weight: 600;
+      padding: 0.6rem 0.8rem;
+      text-align: left;
+    }
+    .score-table td {
+      padding: 0.55rem 0.8rem;
+      border-bottom: 1px solid #e0e8f0;
+      vertical-align: top;
+    }
+    .score-table tr:nth-child(even) td { background: #f4f8fc; }
+    .score-table .score {
+      font-weight: 800;
+      font-size: 1rem;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      text-align: center;
+    }
+    .score.high  { color: #27ae60; }
+    .score.mid   { color: #e67e22; }
+    .score.low   { color: #c0392b; }
+    .score.vlow  { color: #922b21; }
+
+    /* ── Risk pill ── */
+    .risk {
+      display: inline-block;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.15rem 0.5rem;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .risk.high  { background: #fde8e6; color: #c0392b; }
+    .risk.mid   { background: #fef3e0; color: #e67e22; }
+    .risk.low   { background: #e8f8f0; color: #27ae60; }
+
+    /* ── References ── */
+    .references {
+      background: #f4f8fc;
+      border-top: 3px solid #1b3a5c;
+      padding: 2rem 1.5rem;
+      margin-top: 3rem;
+      border-radius: 0 0 8px 8px;
+    }
+    .references h2 {
+      border-bottom: none;
+      margin-top: 0;
+    }
+    .references ol {
+      padding-left: 1.5rem;
+    }
+    .references li {
+      margin-bottom: 0.85rem;
+      font-size: 0.88rem;
+      line-height: 1.55;
+    }
+    .references a {
+      color: #2c5f8a;
+      word-break: break-all;
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.78rem;
+      color: #999;
+      padding: 2rem 1rem;
+      border-top: 1px solid #e0e8f0;
+      margin-top: 2rem;
+    }
+    footer a { color: #2c5f8a; }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      header { padding: 2.5rem 1rem 2rem; }
+      .cards { grid-template-columns: repeat(2, 1fr); }
+      .score-table { font-size: 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════
+     HEADER
+═══════════════════════════════════════════════ -->
+<header>
+  <p class="eyebrow">Evaluación de política pública · Colombia 2026</p>
+  <h1>¿Responde el plan de Iván Cepeda<br>a lo que Colombia necesita en 2026?</h1>
+  <p class="subtitle">
+    Análisis de alineación entre las prioridades del programa de gobierno
+    y los indicadores contextuales de Colombia, con citación Harvard autor-fecha.
+  </p>
+  <div class="meta-row">
+    <span>David Muñoz</span>
+    <span>Junio 2026</span>
+    <span>Citación: Harvard autor-fecha</span>
+    <span>
+      <a href="https://github.com/DavidMume/evaluacion-contexto-colombia-2026-cepeda"
+         style="color:#a8c8e8;">GitHub ↗</a>
+    </span>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════════
+     ARTICLE BODY
+═══════════════════════════════════════════════ -->
+<div class="container">
+
+  <!-- ── Research question ── -->
+  <div class="rq-box">
+    <div class="rq-label">Pregunta de investigación</div>
+    <p>
+      ¿El plan de gobierno de Iván Cepeda responde a las necesidades estructurales e inmediatas
+      de Colombia en 2026, especialmente en inflación, sostenibilidad fiscal, productividad,
+      formalización laboral, seguridad, desigualdad territorial, desarrollo rural,
+      salud, educación y paz?
+    </p>
+  </div>
+
+  <!-- ── 1. Propósito ── -->
+  <h2>1. Propósito y contexto del análisis</h2>
+
+  <p>
+    El proyecto original
+    <a href="https://github.com/DavidMume/analisis-plan-gobierno-ivan-cepeda-2026">
+      <em>analisis-plan-gobierno-ivan-cepeda-2026</em></a>
+    analizó <em>qué dice</em> el programa de Iván Cepeda Castro mediante procesamiento de lenguaje
+    natural: frecuencias léxicas, modelado de tópicos, análisis de sentimiento, redes semánticas,
+    reconocimiento de entidades nombradas y métricas retóricas
+    <cite>(Muñoz, 2026)</cite>.
+  </p>
+
+  <p>
+    <strong>Este segundo proyecto evalúa si esas prioridades responden a lo que Colombia
+    necesita hoy.</strong>
+    La unidad de análisis es la alineación entre el énfasis discursivo del plan y los
+    indicadores contextuales verificables del país en 2026.
+  </p>
+
+  <!-- ── 2. Hallazgos NLP ── -->
+  <h2>2. Lo que dice el plan — hallazgos del análisis NLP</h2>
+
+  <p>
+    El análisis original muestra que el programa de Cepeda es principalmente un documento
+    de <strong>economía política redistributiva</strong>. Los términos dominantes incluyen
+    "pueblo", "territorio", "social", "poder", "vida" y "paz".
+    Los bigramas más frecuentes son: "pacto histórico", "pueblos indígenas",
+    "reforma agraria", "revolución agraria", "derechos humanos" y "justicia social"
+    <cite>(Muñoz, 2026)</cite>.
+  </p>
+
+  <p>
+    El análisis señala una <strong>ausencia relativa de un tópico puramente macroeconómico</strong>.
+    Esto importa porque la agenda de Colombia en 2026 no se limita a justicia social o paz:
+    incluye inflación persistente, déficit fiscal, productividad estancada, inversión débil,
+    informalidad laboral y riesgos de seguridad territorial
+    <cite>(Banco de la República, 2026; World Bank, 2026)</cite>.
+  </p>
+
+  <!-- ── 3. Diagnóstico Colombia ── -->
+  <h2>3. Colombia en 2026 — indicadores de contexto</h2>
+
+  <!-- Key numbers cards -->
+  <div class="cards">
+    <div class="card">
+      <div class="card-value red">5,6%</div>
+      <div class="card-label">Inflación anual<br>Q1 2026</div>
+      <div class="card-source">Banco de la República (2026)</div>
+    </div>
+    <div class="card">
+      <div class="card-value red">6,4%</div>
+      <div class="card-label">Proyección inflación<br>Dic 2026</div>
+      <div class="card-source">Banco de la República (2026)</div>
+    </div>
+    <div class="card">
+      <div class="card-value red">6,4%</div>
+      <div class="card-label">Déficit fiscal<br>% del PIB</div>
+      <div class="card-source">El País (2026a)</div>
+    </div>
+    <div class="card">
+      <div class="card-value amber">2,2%</div>
+      <div class="card-label">Crecimiento PIB<br>proyección 2026</div>
+      <div class="card-source">World Bank (2026)</div>
+    </div>
+    <div class="card">
+      <div class="card-value amber">55%</div>
+      <div class="card-label">Informalidad<br>laboral 2025</div>
+      <div class="card-source">El País (2026c)</div>
+    </div>
+    <div class="card">
+      <div class="card-value green">8,8%</div>
+      <div class="card-label">Desempleo<br>Abr 2026</div>
+      <div class="card-source">El País (2026b)</div>
+    </div>
+    <div class="card">
+      <div class="card-value green">9,9%</div>
+      <div class="card-label">Pobreza multi-<br>dimensional 2025</div>
+      <div class="card-source">El País (2026d)</div>
+    </div>
+    <div class="card">
+      <div class="card-value red">6×</div>
+      <div class="card-label">Brecha ingreso<br>Bogotá vs Chocó</div>
+      <div class="card-source">World Bank (2026)</div>
+    </div>
+  </div>
+
+  <h3>3.1 Inflación y estabilidad monetaria</h3>
+  <p>
+    En el primer trimestre de 2026, la inflación total fue de 5,6% y la inflación básica
+    de 5,8%, ambas por encima de la meta del 3%. El Banco de la República proyectó que
+    la inflación podría llegar a 6,4% en diciembre de 2026, y elevó la tasa de política
+    monetaria a 11,25% <cite>(Banco de la República, 2026)</cite>.
+    Cualquier programa de gobierno debe explicar cómo financiará nuevas políticas sociales
+    sin agravar estas presiones.
+  </p>
+
+  <h3>3.2 Crecimiento económico e inversión</h3>
+  <p>
+    La economía colombiana creció 2,6% en 2025, pero con inversión débil en maquinaria,
+    vivienda e infraestructura <cite>(Banco de la República, 2026)</cite>.
+    El Banco Mundial proyecta un crecimiento de 2,2% para 2026, limitado por productividad
+    estancada, baja integración global, sistema tributario complejo y gasto público rígido
+    <cite>(World Bank, 2026)</cite>.
+  </p>
+
+  <h3>3.3 Déficit fiscal</h3>
+  <p>
+    Colombia llega al ciclo electoral con avances sociales, pero con un déficit público
+    estimado alrededor del 6,4% del PIB, uno de los más altos fuera del período pandémico
+    <cite>(El País, 2026a)</cite>.
+    Un programa que proponga ampliar derechos sociales, reforma agraria, salud y educación
+    debe especificar fuentes de financiación y compatibilidad con la regla fiscal.
+  </p>
+
+  <h3>3.4 Empleo e informalidad</h3>
+  <p>
+    El desempleo bajó a 8,8% en abril de 2026, uno de los niveles más bajos del siglo
+    <cite>(El País, 2026b)</cite>.
+    Sin embargo, la informalidad laboral se mantiene alrededor del 55%
+    <cite>(El País, 2026c)</cite>,
+    limitando protección social, productividad y base tributaria.
+  </p>
+
+  <h3>3.5 Pobreza y desigualdad territorial</h3>
+  <p>
+    La pobreza multidimensional bajó a 9,9% en 2025, el mínimo desde que se mide
+    sistemáticamente <cite>(El País, 2026d)</cite>.
+    Sin embargo, persisten brechas profundas: Bogotá tiene ingresos casi seis veces
+    superiores a Chocó, y los niños en La Guajira tienen el doble de probabilidad
+    de rezagarse en la escuela que los de la capital <cite>(World Bank, 2026)</cite>.
+  </p>
+
+  <h3>3.6 Seguridad y control territorial</h3>
+  <p>
+    Colombia enfrenta disputas de grupos armados por control territorial, especialmente
+    en zonas ligadas a economías ilegales. Enfrentamientos recientes causaron al menos
+    52 muertos en zonas de disputa <cite>(Reuters, 2026)</cite>, y se han reportado
+    capturas vinculadas a redes de extorsión y secuestro
+    <cite>(Associated Press, 2026)</cite>.
+  </p>
+
+  <!-- ── 4. Evaluación de alineación ── -->
+  <h2>4. Evaluación de alineación — Plan Cepeda vs. necesidades de Colombia</h2>
+
+  <p>
+    La escala de alineación va de 1 a 5:
+    <strong>5</strong> = muy alineado;
+    <strong>3</strong> = parcialmente alineado;
+    <strong>1</strong> = casi ausente.
+    El riesgo de implementación también se mide de 1 (bajo) a 5 (muy alto).
+  </p>
+
+  <table class="score-table">
+    <thead>
+      <tr>
+        <th>Área</th>
+        <th style="text-align:center;">Alineación</th>
+        <th style="text-align:center;">Riesgo</th>
+        <th>Riesgo principal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Derechos humanos y paz</td>
+        <td class="score high">5.0</td>
+        <td style="text-align:center;"><span class="risk low">Bajo 2.0</span></td>
+        <td>Que la paz no venga acompañada de control territorial efectivo</td>
+      </tr>
+      <tr>
+        <td>Reforma agraria y territorio</td>
+        <td class="score high">5.0</td>
+        <td style="text-align:center;"><span class="risk mid">Medio 3.5</span></td>
+        <td>Baja capacidad estatal para implementar catastro, tierras e infraestructura</td>
+      </tr>
+      <tr>
+        <td>Inclusión social</td>
+        <td class="score high">4.0</td>
+        <td style="text-align:center;"><span class="risk mid">Medio 2.5</span></td>
+        <td>Sostenibilidad fiscal del gasto social</td>
+      </tr>
+      <tr>
+        <td>Salud y educación pública</td>
+        <td class="score high">4.0</td>
+        <td style="text-align:center;"><span class="risk mid">Medio 3.0</span></td>
+        <td>Financiamiento y capacidad administrativa</td>
+      </tr>
+      <tr>
+        <td>Seguridad territorial efectiva</td>
+        <td class="score mid">3.0</td>
+        <td style="text-align:center;"><span class="risk high">Alto 4.0</span></td>
+        <td>Insuficiencia de instrumentos coercitivos, judiciales e institucionales</td>
+      </tr>
+      <tr>
+        <td>Empleo formal</td>
+        <td class="score low">2.5</td>
+        <td style="text-align:center;"><span class="risk mid">Medio 3.5</span></td>
+        <td>Mayor costo laboral para pequeñas empresas sin transición gradual</td>
+      </tr>
+      <tr>
+        <td>Productividad e inversión</td>
+        <td class="score low">2.0</td>
+        <td style="text-align:center;"><span class="risk high">Alto 4.5</span></td>
+        <td>Falta de estrategia clara para inversión privada, tecnología y exportaciones</td>
+      </tr>
+      <tr>
+        <td>Inflación y estabilidad fiscal</td>
+        <td class="score vlow">1.5</td>
+        <td style="text-align:center;"><span class="risk high">Alto 5.0</span></td>
+        <td>Expansión de gasto sin financiamiento creíble</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ── 5. Gráficos ── -->
+  <h2>5. Visualizaciones</h2>
+
+  <figure>
+    <img src="outputs/charts/alineacion_plan_necesidades.png"
+         alt="Gráfico de barras horizontales: puntaje de alineación del plan de Cepeda por área de política pública, Colombia 2026" />
+    <figcaption>
+      <strong>Figura 1.</strong> Alineación del plan de Cepeda con las necesidades de Colombia, 2026.
+      Escala 1 (mínima) a 5 (máxima). Verde: alta alineación (≥ 3.5); naranja: parcial (2.5–3.5);
+      rojo: baja (&lt; 2.5). Elaboración propia con base en Muñoz (2026), Banco de la República (2026)
+      y World Bank (2026).
+    </figcaption>
+  </figure>
+
+  <figure>
+    <img src="outputs/charts/riesgo_implementacion.png"
+         alt="Gráfico de barras horizontales: riesgo de implementación por área de política pública, Plan Cepeda 2026" />
+    <figcaption>
+      <strong>Figura 2.</strong> Riesgo de implementación por área de política pública — Plan Cepeda 2026.
+      Escala 1 (bajo riesgo) a 5 (riesgo muy alto). Las áreas con mayor alineación no necesariamente
+      tienen menor riesgo operativo. Elaboración propia.
+    </figcaption>
+  </figure>
+
+  <figure>
+    <img src="outputs/charts/alineacion_vs_riesgo.png"
+         alt="Diagrama de dispersión: alineación vs. riesgo de implementación por área de política pública" />
+    <figcaption>
+      <strong>Figura 3.</strong> Alineación vs. riesgo de implementación — Plan Cepeda 2026.
+      Cada punto representa un área de política pública. El cuadrante superior izquierdo (alta alineación,
+      alto riesgo) concentra las principales apuestas del plan. Elaboración propia.
+    </figcaption>
+  </figure>
+
+  <figure>
+    <img src="outputs/charts/indicadores_contexto.png"
+         alt="Panel de indicadores macroeconómicos y sociales de Colombia 2026" />
+    <figcaption>
+      <strong>Figura 4.</strong> Indicadores de contexto — Colombia 2026.
+      Rojo: presiones y riesgos macroeconómicos; verde: crecimiento económico; azul: mercado laboral;
+      naranja: informalidad. Fuentes: Banco de la República (2026), World Bank (2026), El País (2026a–d).
+    </figcaption>
+  </figure>
+
+  <!-- ── 6. Tesis interpretativa ── -->
+  <h2>6. Tesis interpretativa</h2>
+
+  <p>
+    El programa de Iván Cepeda responde con fuerza a las <strong>heridas históricas de
+    Colombia</strong>: desigualdad territorial, concentración de tierra, exclusión social,
+    violencia política, víctimas y derechos humanos. En estas dimensiones, el plan muestra
+    alta alineación con necesidades profundas del país
+    <cite>(World Bank, 2026; Reuters, 2026; Associated Press, 2026)</cite>.
+  </p>
+
+  <p>
+    Sin embargo, Colombia en 2026 también enfrenta restricciones <strong>inmediatas</strong>:
+    inflación por encima de la meta, crecimiento moderado, inversión débil, productividad
+    estancada, informalidad alta y deterioro fiscal
+    <cite>(Banco de la República, 2026; El País, 2026a)</cite>.
+    En estas áreas, el análisis textual del programa sugiere una menor centralidad discursiva
+    <cite>(Muñoz, 2026)</cite>.
+  </p>
+
+  <div class="callout">
+    <p>
+      <strong>Conclusión:</strong> El plan de Cepeda es fuerte como agenda de justicia histórica
+      y transformación social, pero necesita mayor precisión económica para responder plenamente
+      a lo que Colombia necesita en 2026: estabilidad fiscal, productividad, inversión,
+      formalización laboral y seguridad territorial efectiva.
+    </p>
+  </div>
+
+  <!-- ── 7. Metodología ── -->
+  <h2>7. Metodología y datos</h2>
+
+  <p>
+    El análisis combina tres fuentes: (i) los resultados del análisis NLP del programa de
+    gobierno <cite>(Muñoz, 2026)</cite>; (ii) indicadores macroeconómicos y sociales de
+    Colombia publicados en 2026 por el Banco de la República, el Banco Mundial y medios
+    de prensa internacionales; y (iii) una matriz de alineación construida por el autor
+    con escala Likert de 1 a 5, evaluando cada área de política pública.
+  </p>
+
+  <p>
+    Los datos crudos están disponibles en los archivos
+    <code>data/alineacion_plan_necesidades_2026.csv</code> y
+    <code>data/indicadores_contexto_colombia_2026.csv</code>.
+    Los gráficos se generan con el script
+    <code>scripts/graficar_alineacion.py</code>
+    usando Python (pandas, matplotlib).
+  </p>
+
+  <!-- ── References ── -->
+  <div class="references">
+    <h2>Referencias</h2>
+    <ol>
+      <li>
+        Associated Press (2026) 'Colombia arrests members of extortion and kidnapping network',
+        <em>AP News</em>, 2026. Available at:
+        <a href="https://apnews.com/article/f82b3de214c0cbb99a117aa254749020"
+           target="_blank">https://apnews.com/article/f82b3de214c0cbb99a117aa254749020</a>
+        (Accessed: 3 June 2026).
+      </li>
+      <li>
+        Banco de la República (2026) <em>Monetary Policy Report: April 2026</em>.
+        Bogotá: Banco de la República. Available at:
+        <a href="https://www.banrep.gov.co/en/publications-research/monetary-policy-report/april-2026"
+           target="_blank">https://www.banrep.gov.co/en/publications-research/monetary-policy-report/april-2026</a>
+        (Accessed: 3 June 2026).
+      </li>
+      <li>
+        El País (2026a) 'Colombia llega a las urnas con los mejores indicadores sociales del siglo
+        y un déficit solo superado en pandemia', <em>El País</em>, 28 May. Available at:
+        <a href="https://elpais.com/america-colombia/elecciones-presidenciales/2026-05-28/colombia-llega-a-las-urnas-con-los-mejores-indicadores-sociales-del-siglo-y-un-deficit-solo-superado-en-pandemia.html"
+           target="_blank">elpais.com ↗</a>
+        (Accessed: 3 June 2026).
+      </li>
+      <li>
+        El País (2026b) 'El desempleo en Colombia se estabiliza en abril con un 8,8%',
+        <em>El País</em>, 29 May. Available at:
+        <a href="https://elpais.com/america-colombia/2026-05-29/el-desempleo-en-colombia-se-estabiliza-en-abril-con-un-88.html"
+           target="_blank">elpais.com ↗</a>
+        (Accessed: 3 June 2026).
+      </li>
+      <li>
+        El País (2026c) 'El desempleo en Colombia logra sus mínimos en lo que va del siglo
+        al sellar 2025 en 8,9%', <em>El País</em>, 30 January. Available at:
+        <a href="https://elpais.com/america-colombia/2026-01-30/el-desempleo-en-colombia-logra-sus-minimos-en-lo-que-va-del-siglo-al-sellar-2025-en-89.html"
+           target="_blank">elpais.com ↗</a>
+        (Accessed: 3 June 2026).
+      </li>
+      <li>
+        El País (2026d) 'La pobreza multidimensional en Colombia baja a 9,9% en 2025',
+        <em>El País</em>, 14 April. Available at:
+        <a href="https://elpais.com/america-colombia/2026-04-14/la-pobreza-multidimensional-en-colombia-baja-a-99-en-2025.html"
+           target="_blank">elpais.com ↗</a>
+        (Accessed: 3 June 2026).
+      </li>
+      <li>
+        Muñoz, D. (2026) <em>Análisis computacional del programa de gobierno de Iván Cepeda
+        Castro: Elecciones Presidenciales Colombia 2026–2030</em>. GitHub repository.
+        Available at:
+        <a href="https://github.com/DavidMume/analisis-plan-gobierno-ivan-cepeda-2026"
+           target="_blank">https://github.com/DavidMume/analisis-plan-gobierno-ivan-cepeda-2026</a>
+        (Accessed: 3 June 2026).
+      </li>
+      <li>
+        Reuters (2026) 'Clashes between armed groups in Colombia kill at least 52',
+        <em>Reuters</em>, 28 May. Available at:
+        <a href="https://www.reuters.com/world/americas/clashes-between-armed-groups-colombia-kill-at-least-52-2026-05-28/"
+           target="_blank">https://www.reuters.com ↗</a>
+        (Accessed: 3 June 2026).
+      </li>
+      <li>
+        World Bank (2026) <em>Colombia: Development news, research, data</em>.
+        Washington, DC: World Bank. Available at:
+        <a href="https://www.worldbank.org/en/country/colombia/overview"
+           target="_blank">https://www.worldbank.org/en/country/colombia/overview</a>
+        (Accessed: 3 June 2026).
+      </li>
+    </ol>
+  </div>
+
+</div><!-- /container -->
+
+<footer>
+  <p>
+    David Muñoz · <em>evaluacion-contexto-colombia-2026-cepeda</em> · Junio 2026 ·
+    <a href="https://github.com/DavidMume/evaluacion-contexto-colombia-2026-cepeda">GitHub ↗</a>
+  </p>
+  <p style="margin-top:0.4rem;">
+    Proyecto relacionado:
+    <a href="https://github.com/DavidMume/analisis-plan-gobierno-ivan-cepeda-2026">
+      analisis-plan-gobierno-ivan-cepeda-2026 ↗</a>
+  </p>
+</footer>
+
+</body>
+</html>
