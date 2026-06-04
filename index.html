@@ -527,11 +527,11 @@
     </tbody>
   </table>
 
-  <!-- ── 5. Gráficos ── -->
-  <h2>5. Visualizaciones</h2>
+  <!-- ── 5. Visualizaciones de alineación ── -->
+  <h2>5. Visualizaciones — alineación y contexto</h2>
 
   <figure>
-    <img src="outputs/charts/alineacion_plan_necesidades.png"
+    <img src="images/alineacion_plan_necesidades.png"
          alt="Gráfico de barras horizontales: puntaje de alineación del plan de Cepeda por área de política pública, Colombia 2026" />
     <figcaption>
       <strong>Figura 1.</strong> Alineación del plan de Cepeda con las necesidades de Colombia, 2026.
@@ -542,7 +542,7 @@
   </figure>
 
   <figure>
-    <img src="outputs/charts/riesgo_implementacion.png"
+    <img src="images/riesgo_implementacion.png"
          alt="Gráfico de barras horizontales: riesgo de implementación por área de política pública, Plan Cepeda 2026" />
     <figcaption>
       <strong>Figura 2.</strong> Riesgo de implementación por área de política pública — Plan Cepeda 2026.
@@ -552,7 +552,7 @@
   </figure>
 
   <figure>
-    <img src="outputs/charts/alineacion_vs_riesgo.png"
+    <img src="images/alineacion_vs_riesgo.png"
          alt="Diagrama de dispersión: alineación vs. riesgo de implementación por área de política pública" />
     <figcaption>
       <strong>Figura 3.</strong> Alineación vs. riesgo de implementación — Plan Cepeda 2026.
@@ -562,7 +562,7 @@
   </figure>
 
   <figure>
-    <img src="outputs/charts/indicadores_contexto.png"
+    <img src="images/indicadores_contexto.png"
          alt="Panel de indicadores macroeconómicos y sociales de Colombia 2026" />
     <figcaption>
       <strong>Figura 4.</strong> Indicadores de contexto — Colombia 2026.
@@ -571,7 +571,105 @@
     </figcaption>
   </figure>
 
-  <!-- ── 6. Tesis interpretativa ── -->
+  <!-- ── 6. Verificabilidad de cifras ── -->
+  <h2>6. Verificabilidad de las cifras del plan</h2>
+
+  <p>
+    Se extrajeron <strong>84 cifras cuantitativas</strong> del programa de gobierno
+    (<em>programa-gobierno-2026-2030.pdf</em>, 209 páginas) mediante análisis automatizado
+    del texto con <em>pdfplumber</em> y expresiones regulares. De ellas, se seleccionaron
+    30 cifras clave para verificación cruzada con indicadores públicos de Colombia 2025–2026.
+    Cada cifra se clasificó en cuatro categorías:
+  </p>
+
+  <div class="cards" style="grid-template-columns:repeat(4,1fr);">
+    <div class="card">
+      <div class="card-value green" style="font-size:1.5rem;">✅</div>
+      <div class="card-label" style="font-weight:700;">Verificable<br>y consistente</div>
+      <div class="card-source">Coincide con datos oficiales</div>
+    </div>
+    <div class="card">
+      <div class="card-value amber" style="font-size:1.5rem;">⚠️</div>
+      <div class="card-label" style="font-weight:700;">Parcialmente<br>verificable</div>
+      <div class="card-source">Real pero requiere contexto</div>
+    </div>
+    <div class="card">
+      <div class="card-value" style="color:#8e44ad;font-size:1.5rem;">🎯</div>
+      <div class="card-label" style="font-weight:700;">Ambicioso</div>
+      <div class="card-source">Meta real pero aspiracional</div>
+    </div>
+    <div class="card">
+      <div class="card-value red" style="font-size:1.5rem;">❌</div>
+      <div class="card-label" style="font-weight:700;">No consistente</div>
+      <div class="card-source">Difiere de fuente oficial</div>
+    </div>
+  </div>
+
+  <figure>
+    <img src="images/verificabilidad_resumen.png"
+         alt="Gráfico de dona: distribución de las 30 cifras clave del plan por tipo de verificabilidad" />
+    <figcaption>
+      <strong>Figura 5.</strong> Distribución de las 30 cifras clave del plan de Cepeda por tipo de
+      verificabilidad. La mayoría son verificables o parcialmente verificables con fuentes públicas.
+      Elaboración propia a partir de <em>programa-gobierno-2026-2030.pdf</em>.
+    </figcaption>
+  </figure>
+
+  <figure>
+    <img src="images/verificabilidad_por_tema.png"
+         alt="Barras apiladas: verificabilidad de cifras del plan por tema" />
+    <figcaption>
+      <strong>Figura 6.</strong> Verificabilidad por tema de política pública.
+      Los temas con más cifras son reforma agraria/tierra, empleo y economía fiscal.
+      Las cifras de paz y seguridad son en general consistentes con fuentes oficiales.
+      Elaboración propia.
+    </figcaption>
+  </figure>
+
+  <figure>
+    <img src="images/cifras_clave_comparacion.png"
+         alt="Barras comparativas: cifras del plan de Cepeda versus indicadores reales de Colombia 2025-2026" />
+    <figcaption>
+      <strong>Figura 7.</strong> Comparación directa entre cifras citadas en el plan y los indicadores
+      reales de Colombia 2025–2026. La cifra de crecimiento del PIB (3,6% en el plan vs. 2,6% según
+      el Banco de la República) es la principal discrepancia identificada.
+      Fuentes: Banco de la República (2026), DANE (2025), UPME (2025).
+    </figcaption>
+  </figure>
+
+  <h3>Cifras clave — tabla de verificabilidad</h3>
+  <div style="overflow-x:auto;">
+  <table class="score-table">
+    <thead>
+      <tr>
+        <th>Pág.</th><th>Cifra en el plan</th><th>Tema</th>
+        <th>Indicador real 2025–2026</th>
+        <th style="text-align:center;">Estado</th>
+        <th>Fuente de contraste</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>22</td><td>94% impunidad por corrupción</td><td>Corrupción / justicia</td><td>~94% (CCSPJP 2024)</td><td style="text-align:center;"><span class="risk low">✅ Consistente</span></td><td>Consejo Ciudadano Seg. Pública (2024)</td></tr>
+      <tr><td>67</td><td>Pobreza monetaria bajó de 42% a 29%</td><td>Pobreza</td><td>DANE 2020–2024: 42,5% → 29%</td><td style="text-align:center;"><span class="risk low">✅ Consistente</span></td><td>DANE Pobreza Monetaria 2020–2024</td></tr>
+      <tr><td>93</td><td>10% más ricos poseen 81% de tierras</td><td>Reforma agraria</td><td>IGAC-OXFAM: Gini tierra = 0,89</td><td style="text-align:center;"><span class="risk low">✅ Consistente</span></td><td>IGAC (2017); OXFAM Colombia (2017)</td></tr>
+      <tr><td>200</td><td>80% municipios sin agua potable</td><td>Infraestructura rural</td><td>DANE ENA: 79,4% con deficiencias</td><td style="text-align:center;"><span class="risk low">✅ Consistente</span></td><td>DANE Estadísticas Agua (2022)</td></tr>
+      <tr><td>191</td><td>37% aumento salario mínimo</td><td>Empleo</td><td>Acumulado 2022–2025: ~42%</td><td style="text-align:center;"><span class="risk low">✅ Consistente</span></td><td>Ministerio del Trabajo (2025)</td></tr>
+      <tr><td>86</td><td>10,1 millones de víctimas (RUV)</td><td>Paz / víctimas</td><td>RUV 2025: 9,56M activas; histórico &gt;10M</td><td style="text-align:center;"><span class="risk low">✅ Consistente</span></td><td>Unidad para las Víctimas — RUV (2025)</td></tr>
+      <tr><td>426</td><td>Del 2% al 15% en energías limpias</td><td>Medio ambiente</td><td>UPME 2025: ~13–15% capacidad instalada</td><td style="text-align:center;"><span class="risk low">✅ Consistente</span></td><td>UPME; XM operador sistema (2025)</td></tr>
+      <tr><td>219</td><td>Desempleo al 8,2%</td><td>Empleo</td><td>DANE Abr-2026: 8,8%; anual 2025: 8,9%</td><td style="text-align:center;"><span class="risk mid">⚠️ Con matices</span></td><td>DANE GEIH; El País (2026b)</td></tr>
+      <tr><td>191</td><td>2,5 millones de empleos creados</td><td>Empleo</td><td>DANE: variación neta ocupados ~1,6M</td><td style="text-align:center;"><span class="risk mid">⚠️ Con matices</span></td><td>DANE GEIH 2022–2025</td></tr>
+      <tr><td>67</td><td>17 millones en pobreza monetaria</td><td>Pobreza</td><td>DANE 2024: ~15,1M (29% sobre 52M hab.)</td><td style="text-align:center;"><span class="risk mid">⚠️ Con matices</span></td><td>DANE Pobreza Monetaria (2024)</td></tr>
+      <tr><td>355</td><td>Desempleo mujeres 9% vs hombres 5%</td><td>Empleo / género</td><td>DANE 2025: mujeres 10,5%; hombres 7,1%</td><td style="text-align:center;"><span class="risk mid">⚠️ Con matices</span></td><td>DANE GEIH (2025)</td></tr>
+      <tr><td>116</td><td>27,6 billones inversión Pacto Cauca</td><td>Economía / fiscal</td><td>Presupuesto nacional total ~100 billones</td><td style="text-align:center;"><span class="risk mid">⚠️ Ambicioso</span></td><td>MHCP Presupuesto (2026)</td></tr>
+      <tr><td>426</td><td>Reducir 51% emisiones GEI al 2030</td><td>Medio ambiente</td><td>Meta NDC real; cumplimiento en duda según IDEAM</td><td style="text-align:center;"><span class="risk mid">⚠️ Ambicioso</span></td><td>IDEAM NDC Colombia; UNFCCC (2020)</td></tr>
+      <tr><td>219</td><td>Economía creciendo al 3,6%</td><td>Economía macro</td><td>BanRep 2025: PIB = <strong>2,6%</strong></td><td style="text-align:center;"><span class="risk high">❌ Sobreestimado</span></td><td>Banco de la República (2026)</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <!-- ── 7. Tesis interpretativa ── -->
+  <h2>7. Tesis interpretativa</h2>
+
   <h2>6. Tesis interpretativa</h2>
 
   <p>
